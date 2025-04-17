@@ -1,0 +1,10 @@
+What is a List?
+A list is a collection of items in a particular order. You can make a list that includes the letters of the alphabet, the digits from 0 to 9, or the names of all the people in your family.
+
+Lists are ordered collections, so you can access any element in a list by telling Python the position, or index, of the item desired.
+
+Index Positions Start at 0, Not 1
+
+Python considers the first item in a list to be at position 0, not position 1. This is true of most programming languages, and the reason has to do with how the list operations are implemented at a lower level.
+
+
