@@ -25,7 +25,7 @@ for i in motorcycles:
 #Use del <listname>[<index>] method
 print()
 print()
-print('Usage of del statement ot remove item at a specific index')
+print('Usage of del statement to remove item at a specific index')
 print()
 print('Before Values')
 for i in motorcycles:
