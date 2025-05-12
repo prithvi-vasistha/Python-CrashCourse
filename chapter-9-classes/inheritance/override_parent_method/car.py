@@ -28,6 +28,7 @@ class Car:
             exit()
         self.odo = value
 
+<<<<<<< HEAD
     def petrol_car(self):
         """ a simple method that prints the selected car runs on petrol"""
         print(f'{self.make} runs on petrol')
@@ -60,6 +61,21 @@ class Electric_Car(Car):
         print(f'mofo {self.make} does not run on petrol')
 
 
+=======
+
+
+class Electric_Car(Car):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        self.battery_size = 45
+
+    def start_car(self, key):
+        if key:
+            print(f'Hiss, <silence> your {self.make} is ON')
+
+    def describe_battery(self):
+        print(f'The car {self.make} has a {self.battery_size}-kWh battery')
+>>>>>>> 80751539a9bef86ad0e81dc317c7981ab6cb2a8b
 mercedes = Car('mercedes', 's-class', 2012)
 bmw = Car('BMW', '320d', 2009)
 
@@ -67,14 +83,20 @@ mercedes.describe_car()
 print()
 mercedes.update_odo(3000)
 mercedes.readodometer()
+<<<<<<< HEAD
 mercedes.petrol_car()
+=======
+>>>>>>> 80751539a9bef86ad0e81dc317c7981ab6cb2a8b
 
 bmw.describe_car()
 print()
 
 bmw.start_car('key')
 mercedes.start_car('key')
+<<<<<<< HEAD
 bmw.petrol_car()
+=======
+>>>>>>> 80751539a9bef86ad0e81dc317c7981ab6cb2a8b
 
 bmw.readodometer()
 mercedes.readodometer()
@@ -85,9 +107,14 @@ print()
 byd.describe_car()
 byd.start_car('key')
 byd.readodometer()
+<<<<<<< HEAD
 byd.battery_size.describe_battery('byd')
 
 byd.petrol_car()
+=======
+byd.describe_battery()
+
+>>>>>>> 80751539a9bef86ad0e81dc317c7981ab6cb2a8b
 
 
 
