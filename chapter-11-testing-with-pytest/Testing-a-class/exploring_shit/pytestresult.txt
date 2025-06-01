@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.5, pytest-7.4.0, pluggy-1.0.0
+rootdir: /Users/prithvi_vasistha/Documents/ppv-skill-dev/python/Codes-Notebooks/github/chapter-11-testing-with-pytest/Testing-a-class
+plugins: anyio-3.5.0
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+_______________________ ERROR collecting test_survey.py ________________________
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/runner.py:341: in from_call
+    result: Optional[TResult] = func()
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/runner.py:372: in <lambda>
+    call = CallInfo.from_call(lambda: list(collector.collect()), "collect")
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/python.py:531: in collect
+    self._inject_setup_module_fixture()
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/python.py:545: in _inject_setup_module_fixture
+    self.obj, ("setUpModule", "setup_module")
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/python.py:310: in obj
+    self._obj = obj = self._getobj()
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/python.py:528: in _getobj
+    return self._importtestmodule()
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/pathlib.py:565: in import_path
+    importlib.import_module(module_name)
+../../../../../../../anaconda3/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1204: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1176: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:690: in _load_unlocked
+    ???
+../../../../../../../anaconda3/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:178: in exec_module
+    exec(co, module.__dict__)
+test_survey.py:8: in <module>
+    testcases = json.loads(path)
+../../../../../../../anaconda3/lib/python3.11/json/__init__.py:339: in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+E   TypeError: the JSON object must be str, bytes or bytearray, not PosixPath
+=========================== short test summary info ============================
+ERROR test_survey.py - TypeError: the JSON object must be str, bytes or bytea...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.07s ===============================
