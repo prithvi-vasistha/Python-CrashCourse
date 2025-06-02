@@ -1,1 +1,0 @@
-print('"if life gives you lemonade, make lemons and life will be all like whaaaatt!!???"\n\t\t\t\t\t\t\t\t\t\t- Phil Dunphy')

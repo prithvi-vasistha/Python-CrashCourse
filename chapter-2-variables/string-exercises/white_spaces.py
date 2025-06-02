@@ -1,5 +1,0 @@
-print('hello\ttabspace!!')
-print()
-print('hello\nwhite\nspace\n!!')
-print()
-print('hello\n\treader')
