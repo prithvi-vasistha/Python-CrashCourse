@@ -1,0 +1,20 @@
+travel_check_list=['london', 'paris', 'new york', 'ireland']
+print('This is my travel check list:\n', travel_check_list)
+print()
+print('This is the alphabetically sorted version of my travel checklist:\n', sorted(travel_check_list))
+print('The original list is still unaffected:\n', travel_check_list)
+print()
+print('\nThis is the descending order of alphabetically sorted version of my checklist:\n', sorted(travel_check_list, reverse=True))
+print('The original list is still unaffected:\n', travel_check_list)
+print()
+print()
+travel_check_list.reverse()
+print('The reverse order of my checklist is as follows:\n', travel_check_list)
+print('The original order of the checklist has been modified and we are unable to fetch the original  values now')
+
+print()
+travel_check_list.sort()
+print('The alphabetically sorted version of the changed list to permanently change the order of the reversed list is as follows:\n', travel_check_list)
+
+travel_check_list.sort(reverse=True)
+print('The alphabetically descending version of the changed list to permanently change the order of the ascending sorted list is as follows:\n', travel_check_list)
