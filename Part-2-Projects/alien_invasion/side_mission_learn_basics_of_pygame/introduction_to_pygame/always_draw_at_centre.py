@@ -32,7 +32,9 @@ while running:
                 index = index%len(available_colours) 
             screen.fill(colour)
 
+            height, width = screen.get_size()
+            exact_center = (int(height/2), int(width/2))
             if colour == red:
-                pygame.draw.circle(screen, black, (200,200),20)
+                pygame.draw.circle(screen, black, exact_center,20)
             pygame.display.flip()
         
