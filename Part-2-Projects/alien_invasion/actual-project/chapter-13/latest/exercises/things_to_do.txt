@@ -1,0 +1,8 @@
+1. load pygame window in full screen
+2. load the ship image
+3. rotate the image in the correct orientation
+4. set the location of the ship to the correct coordinates and make it load in in the middle left area and make it moveable i.e. up and down till the screen length
+5. write the bullets code
+6. make the ship fire the bullets from the ships tip
+7. delete old bullets
+8. limit bullets to 3
