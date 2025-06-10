@@ -78,9 +78,25 @@ class AlienInvasion:
         pygame.display.flip()
 
     def _create_alien_fleet(self):
+        # Goal: create an alien and keep adding alien till the end of the screen
+        # The space between each alien is of one alien
         alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        current_x, current_y = alien_width, alien_height
+        while current_y < (self.settings.screen_height - 3*alien_height):
+            while current_x < (self.settings.screen_width - 2*alien_width):
+                self._add_new_alien(current_x, current_y)
+                current_x += 2*alien_width
+            current_x = alien_width
+            current_y += 2*alien_height
         self.aliens.add(alien)
 
+    def _add_new_alien(self, current_x, current_y):
+        new_alien = Alien(self)
+        new_alien.x = current_x
+        new_alien.rect.x = current_x
+        new_alien.rect.y = current_y
+        self.aliens.add(new_alien)
 
 if __name__ == "__main__":
     alien = AlienInvasion()
