@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from settings import Settings 
 from ship import Ship
 from bullet import Bullet
@@ -76,24 +77,29 @@ class SideWaysShooter:
 
     def _draw_stars(self):
         star = Star(self)
+        screen_size = self.settings.screen.get_rect()
+        fourty_percent_of_the_screen = 0.6*screen_size.width
         star_width = star.rect.width
         star_height = star.rect.height
+        current_y = star_height
+        current_x = star_width
+        
+        count = 10
+        while count >= 0:
+            new_star = Star(self)
+            new_star.rect.x = random.randrange(int(fourty_percent_of_the_screen),int(screen_size.right - 2*new_star.rect.width))
+            new_star.rect.y = random.randrange(screen_size.top + 2*star_height, screen_size.bottom - 2*star_height)
+            self.stars.add(new_star)
+            count -=1
 
-        current_x = star.rect.x
-        current_y = star.rect.y
-        sixty_percent_of_game_screen = 0.6 * (self.settings.screen.get_rect().width)
-        print(self.settings.screen.get_rect().right)
-        print(self.ship.image.get_rect().right)
-        while current_x > sixty_percent_of_game_screen:
-            while current_y >= 2*star_height:
-                new_star = Star(self)
-                new_star.rect.x = current_x
-                new_star.rect.y = current_y
-                self.stars.add(new_star)
-                current_y -= 2*star_height
-            current_x -= 2*star_width
-            current_y = star.rect.y
-        self.stars.add(star)
+        # print(fourty_percent_of_the_screen)
+        # print(screen_size.right)
+        # print(f"screen_size.bottom : {screen_size.bottom}")
+        # print(f"screen_size.bottom - 2*star_height : {screen_size.bottom - 2*star_height}")
+        # print(f"screen_size.top : {screen_size.top}")
+        # print(f"screen_size.top + 2*star_height : {screen_size.top + 2*star_height}")
+
+
 
         
 
