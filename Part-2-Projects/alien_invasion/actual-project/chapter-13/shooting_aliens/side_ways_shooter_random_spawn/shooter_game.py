@@ -62,8 +62,12 @@ class SideWaysShooter:
             self.ship.moving_right = False
 
     def _add_bullet(self):
-        new_bullet = Bullet(self)
-        self.bullets.add(new_bullet)
+        if len(self.bullets) < self.settings.amount_bullets:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+        else:
+            pass
 
     def _update_bullets(self):
         self.bullets.update()
@@ -71,6 +75,9 @@ class SideWaysShooter:
             bullet.draw_bullet()
         self._delete_old_bullets()
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if not self.aliens:
+            self._draw_aliens()
 
     def _delete_old_bullets(self):
         for bullet in self.bullets.copy():
