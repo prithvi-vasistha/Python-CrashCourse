@@ -1,1 +1,10 @@
 make aliens spawn randomly but only upto 60% of the screen height
+make the movement of aliens random
+
+
+give players bonus
+
+as time goes on, make the alien speed more and more
+
+if no bullets in sets of 3 miss, make the bullets wider 
+  
