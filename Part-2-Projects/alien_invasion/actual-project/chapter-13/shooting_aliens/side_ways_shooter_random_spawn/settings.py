@@ -10,6 +10,7 @@ class Settings:
         self.bullet_size = (0,0,7,5)
         self.bullet_color = (0,0,0)
         self.bullet_speed = 6.5
+        self.amount_bullets = 5
         self.alien_move_left = 10
         self.alien_move_up_down = 1.5
 

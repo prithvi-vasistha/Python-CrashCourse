@@ -25,7 +25,7 @@ class SideWaysShooter:
             self.aliens.draw(self.settings.screen)
             self.ship.load_image()
             self._update_bullets()
-            self._delete_old_bullets()
+            self._move_aliens()
             self.clock.tick(120)
             pygame.display.flip()
 
@@ -69,10 +69,12 @@ class SideWaysShooter:
         self.bullets.update()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self._delete_old_bullets()
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
     def _delete_old_bullets(self):
         for bullet in self.bullets.copy():
-            if bullet.bullet.right >  self.settings.screen.get_rect().right:
+            if bullet.rect.right >  self.settings.screen.get_rect().right:
                 self.bullets.remove(bullet)
 
     def _draw_aliens(self):
@@ -92,13 +94,8 @@ class SideWaysShooter:
             self.aliens.add(new_alien)
             count -=1
 
-        # print(fourty_percent_of_the_screen)
-        # print(screen_size.right)
-        # print(f"screen_size.bottom : {screen_size.bottom}")
-        # print(f"screen_size.bottom - 2*alien_height : {screen_size.bottom - 2*alien_height}")
-        # print(f"screen_size.top : {screen_size.top}")
-        # print(f"screen_size.top + 2*alien_height : {screen_size.top + 2*alien_height}")
-
+    def _move_aliens(self):
+        self.aliens.update()
 
 
         
