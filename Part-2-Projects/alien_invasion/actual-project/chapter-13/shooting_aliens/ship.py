@@ -4,7 +4,7 @@ class Ship:
     def __init__(self, ai_game):
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
-        self.image = pygame.image.load("/home/ppv/Documents/ppv-skill-dev/python/codes/github/Python-CrashCourse/Part-2-Projects/alien_invasion/actual-project/chapter-13/images/ship.bmp")
+        self.image = pygame.image.load("/Users/prithvi_vasistha/Documents/ppv-skill-dev/python/Codes-Notebooks/github/Part-2-Projects/alien_invasion/actual-project/chapter-13/images/ship.bmp")
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
         self.moving_right = False
