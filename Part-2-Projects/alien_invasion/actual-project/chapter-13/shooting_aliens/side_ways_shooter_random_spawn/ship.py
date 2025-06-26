@@ -6,13 +6,14 @@ class Ship:
         self.game = shooter
         self.settings = self.game.settings
         self.game_screen = self.settings.screen
-        self.image = pygame.image.load("/Users/prithvi_vasistha/Documents/ppv-skill-dev/python/Codes-Notebooks/github/Part-2-Projects/alien_invasion/actual-project/chapter-13/images/ship.bmp")
+        self.image = pygame.image.load("/home/ppv/Documents/ppv-skill-dev/python/codes/github/Python-CrashCourse/Part-2-Projects/alien_invasion/actual-project/chapter-13/exercises/images/ship.bmp")
         self.image = self._rotate_image()
         self._set_position_image()
         self.moving_up = False
         self.moving_down = False
         self.moving_left = False
         self.moving_right = False
+
 
     def get_positions(self):
         return(self.image_size, self.game_screen_size)

@@ -4,12 +4,13 @@ class Ship:
     def __init__(self, ai_game):
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
-        self.image = pygame.image.load("/Users/prithvi_vasistha/Documents/ppv-skill-dev/python/Codes-Notebooks/github/Part-2-Projects/alien_invasion/actual-project/chapter-12/chapter-12c/images/ship.bmp")   
+        self.image = pygame.image.load("/home/ppv/Documents/ppv-skill-dev/python/codes/github/Python-CrashCourse/Part-2-Projects/alien_invasion/actual-project/chapter-16-pilot_ship/images/ship.bmp")
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
         self.moving_right = False
         self.moving_left = False
         self.settings = ai_game.settings
+        
         # store the current x-axis position of the ship in the variable self.x
         self.x = float(self.rect.x)
 

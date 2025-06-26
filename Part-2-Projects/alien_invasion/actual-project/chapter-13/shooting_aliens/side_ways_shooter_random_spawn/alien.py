@@ -8,7 +8,7 @@ class Alien(Sprite):
         self.game = shooter_game
         self.settings = self.game.settings
         self.screen = self.settings.screen
-        self.image = pygame.image.load("/Users/prithvi_vasistha/Documents/ppv-skill-dev/python/Codes-Notebooks/github/Part-2-Projects/alien_invasion/actual-project/chapter-13/images/alien.bmp")
+        self.image = pygame.image.load("/home/ppv/Documents/ppv-skill-dev/python/codes/github/Python-CrashCourse/Part-2-Projects/alien_invasion/actual-project/chapter-13/images/alien.bmp")
         self.ship_rect  = self.game.ship.image.get_rect()
 
         self.transformation_ratio = float(self.ship_rect.width/self.image.get_rect().width)
