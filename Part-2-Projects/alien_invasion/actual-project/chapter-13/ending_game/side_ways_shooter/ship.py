@@ -16,38 +16,41 @@ class Ship:
 
 
     def get_positions(self):
-        return(self.image_size, self.game_screen_size)
+        return(self.rect, self.game_screen_size)
 
 
     def _set_position_image(self):
-        self.image_size = self.image.get_rect()
+        self.rect = self.image.get_rect()
         self.game_screen_size = self.game_screen.get_rect()
-        self.image_size.midleft = self.game_screen_size.midleft
+        self.rect.midleft = self.game_screen_size.midleft
 
     def load_image(self):
-        if self.moving_up and self.image_size.y > self.game_screen_size.y:
-            self.y = float(self.image_size.y)
+        if self.moving_up and self.rect.y > self.game_screen_size.y:
+            self.y = float(self.rect.y)
             self.y -= self.settings.movement_area
-            self.image_size.y = self.y
-        elif self.moving_down and self.image_size.bottom < self.game_screen_size.bottom:
-            self.y = float(self.image_size.y)
+            self.rect.y = self.y
+        elif self.moving_down and self.rect.bottom < self.game_screen_size.bottom:
+            self.y = float(self.rect.y)
             self.y += self.settings.movement_area
-            self.image_size.y = self.y
-        elif self.moving_left and self.image_size.left > self.game_screen_size.left:
-            self.x = float(self.image_size.x)
+            self.rect.y = self.y
+        elif self.moving_left and self.rect.left > self.game_screen_size.left:
+            self.x = float(self.rect.x)
             self.x -= self.settings.movement_area
-            self.image_size.x = self.x
-        elif self.moving_right and self.image_size.right < self.game_screen_size.right:
-            self.x = float(self.image_size.x)
+            self.rect.x = self.x
+        elif self.moving_right and self.rect.right < self.game_screen_size.right:
+            self.x = float(self.rect.x)
             self.x += self.settings.movement_area
-            self.image_size.x = self.x
+            self.rect.x = self.x
 
-        self.game_screen.blit(self.image, self.image_size)
+        self.game_screen.blit(self.image, self.rect)
 
     def _rotate_image(self):
         self.location = self.image.get_rect().center
         rotated_image = pygame.transform.rotate(self.image, 270)
         rotated_image.get_rect().center = self.location
         return rotated_image 
+
+    def center_ship(self):
+        self.rect.midleft = self.game_screen.get_rect().midleft
 
 

@@ -1,0 +1,143 @@
+import sys
+from time import sleep
+import random
+
+import pygame
+
+from settings import Settings 
+from ship import Ship
+from bullet import Bullet
+from alien import Alien
+from game_stats import GameStats
+
+class SideWaysShooter:
+    def __init__(self):
+        pygame.init()
+        self.settings = Settings(self)
+        self.ship = Ship(self)
+        self.clock = pygame.time.Clock()
+        self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+        self.stats = GameStats(self)
+        self.game_state = True
+        self._draw_aliens()
+        
+
+    def run_game(self):
+        while True:
+            for event in pygame.event.get():
+                self._react_to_events(event)
+            if self.game_state:
+                self.settings.screen.fill(self.settings.screen_color)
+                self.aliens.draw(self.settings.screen)
+                self.ship.load_image()
+                self._update_bullets()
+                self._move_aliens()
+                self.clock.tick(120)
+                pygame.display.flip()
+
+    def _react_to_events(self, event):
+        if event.type == pygame.QUIT:
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            self._check_keydown_events(event)
+        elif event.type == pygame.KEYUP:
+            self._check_keyup_events(event)
+
+    def _check_keydown_events(self, event):
+        if event.key == pygame.K_q:
+            sys.exit() 
+        elif event.key == pygame.K_UP:
+            self.ship.moving_up = True
+        elif event.key == pygame.K_DOWN:
+            self.ship.moving_down = True
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+        elif event.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+        elif event.key == pygame.K_SPACE:
+            self._add_bullet()
+
+    def _check_keyup_events(self, event):
+        if event.key == pygame.K_UP:
+            self.ship.moving_up = False
+        elif event.key == pygame.K_DOWN:
+            self.ship.moving_down = False
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
+        elif event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+
+    def _add_bullet(self):
+        if len(self.bullets) < self.settings.amount_bullets:
+            new_bullet = Bullet(self)
+            self.bullets.add(new_bullet)
+
+        else:
+            pass
+
+    def _update_bullets(self):
+        self.bullets.update()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
+        self._delete_old_bullets()
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if not self.aliens:
+            self._draw_aliens()
+
+    def _delete_old_bullets(self):
+        for bullet in self.bullets.copy():
+            if bullet.rect.right >  self.settings.screen.get_rect().right:
+                self.bullets.remove(bullet)
+
+    def _draw_aliens(self):
+        alien = Alien(self)
+        screen_size = self.settings.screen.get_rect()
+        fourty_percent_of_the_screen = 0.6*screen_size.width
+        alien_width = alien.rect.width
+        alien_height = alien.rect.height
+        current_y = alien_height
+        current_x = alien_width
+        
+        count = 10
+        while count >= 0:
+            new_alien = Alien(self)
+            new_alien.rect.x = random.randrange(int(fourty_percent_of_the_screen),int(screen_size.right - 2*new_alien.rect.width))
+            new_alien.rect.y = random.randrange(screen_size.top + 2*alien_height, screen_size.bottom - 2*alien_height)
+            self.aliens.add(new_alien)
+            count -=1
+
+    def _move_aliens(self):
+        self.aliens.update()
+
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            self._ship_hit()
+        self._handle_alien_moving_towards_left()
+        
+
+    def _handle_alien_moving_towards_left(self):
+        for alien in self.aliens.sprites():
+            if alien.rect.x <= self.ship.rect.x:
+                self._ship_hit()
+
+    def _ship_hit(self):
+        print(self.stats.ship_lives)
+        if self.stats.ship_lives > 1:
+            self.stats.ship_lives -= 1
+            self.bullets.empty()
+            self.aliens.empty()
+            sleep(0.5)
+            self._draw_aliens()
+            self.ship.center_ship()
+            sleep(0.5)
+
+        else:
+            self.game_state = False
+
+
+        
+
+if __name__ == "__main__":
+    game = SideWaysShooter()
+    game.run_game()
